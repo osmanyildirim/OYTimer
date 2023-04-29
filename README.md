@@ -77,7 +77,7 @@ timer.start { [weak self] state, _, _ in
 
 ### Countdown
 
-> The timer will be invalidate when state is .completed
+> The timer will be invalidate when state is `.completed`
 
 ```swift
 let timer = OYTimer(type: .countdown(1.minute_s), interval: 1.second_s)
