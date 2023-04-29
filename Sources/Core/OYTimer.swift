@@ -57,7 +57,7 @@ extension OYTimer {
             countdownTotal = remaining
         }
 
-        initTimer(type: type) { timer in
+        initTimer(type: type) {
             if case .countdown = type {
                 self.countdownTotal -= self.interval
 
@@ -89,7 +89,7 @@ extension OYTimer {
     /// - Parameters:
     ///   - type: OYTimer initial type. e.g. `.after`, `.countdown`, `.repeat`
     ///   - block: Completion block that will return Timer
-    private func initTimer(type: TimerType, block: ((_ timer: Timer) -> Void)?) {
+    private func initTimer(type: TimerType, block: (() -> Void)?) {
         var tick = TimeInterval.zero
         var delay = TimeInterval.zero
 
@@ -107,7 +107,7 @@ extension OYTimer {
             if case .after = type {
                 (runLoop as Timer).invalidate()
             }
-            block?(runLoop)
+            block?()
         }
         guard let timer else { return }
 
